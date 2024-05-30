@@ -75,7 +75,7 @@ __Vectors       DCD     __initial_sp               ; Top of Stack
                 DCD     SVC_Handler                ; SVCall Handler
                 DCD     DebugMon_Handler           ; Debug Monitor Handler
                 DCD     0                          ; Reserved
-                DCD     nPendSV_Handler             ; PendSV Handler
+                DCD     PendSV_Handler             ; PendSV Handler
                 DCD     nSysTick_Handler            ; SysTick Handler
 
                 ; External Interrupts
@@ -191,9 +191,9 @@ DebugMon_Handler\
                 EXPORT  DebugMon_Handler           [WEAK]
                 B       .
                 ENDP
-nPendSV_Handler  PROC
-
-
+PendSV_Handler  PROC
+				EXPORT	PendSV_Handler            	[WEAK]
+                B       .
                 ENDP
 nSysTick_Handler PROC
                 EXPORT  nSysTick_Handler            [WEAK]

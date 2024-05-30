@@ -10,6 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
+      <pArmCC>6210000::V6.21::ARMCLANG</pArmCC>
       <pCCUsed>6210000::V6.21::ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
@@ -408,6 +409,21 @@
               <FileName>system_stm32f10x.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\user\system_stm32f10x.c</FilePath>
+            </File>
+            <File>
+              <FileName>task.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\task.c</FilePath>
+            </File>
+            <File>
+              <FileName>systick.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\user\systick.c</FilePath>
+            </File>
+            <File>
+              <FileName>ctxswitch.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\user\ctxswitch.s</FilePath>
             </File>
           </Files>
         </Group>
