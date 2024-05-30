@@ -86,9 +86,9 @@ void vPortSetupTimerInterrupt( void )
 void nSysTick_Handler (void)
 {
 	g_lsystimetick++;
+	printf("\ntick:%d | ", g_lsystimetick);
 	// select candiate task
 	getCanditask ();
 
 	trigger_pendsv();
-
 }

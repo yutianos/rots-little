@@ -27,131 +27,68 @@ Project File Date:  05/29/2024
 <h2>Output:</h2>
 *** Using Compiler 'V6.21', folder: 'D:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-user/task.c(34): warning: no previous prototype for function 'getCanditask' [-Wmissing-prototypes]
-   34 | int getCanditask (void)
+main.c(1): warning: extra ';' outside of a function [-Wextra-semi]
+    1 | ;
+      | ^
+main.c(31): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
+   31 |   ITM_SendChar(ch);
+      |   ~~~~~~~~~~~~ ^~
+main.c(28): warning: unused parameter 'f' [-Wunused-parameter]
+   28 | int fputc(int ch, FILE *f)
+      |                         ^
+main.c(37): warning: no previous prototype for function 'intrrupt_init' [-Wmissing-prototypes]
+   37 | int intrrupt_init(void)
       |     ^
-user/task.c(34): note: declare 'static' if the function is not intended to be used outside of this translation unit
-   34 | int getCanditask (void)
+main.c(37): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   37 | int intrrupt_init(void)
       | ^
       | static 
-user/task.c(84): warning: cast from 'char *' to 'long *' increases required alignment from 1 to 4 [-Wcast-align]
-   84 |         pstktop = (long *)&ptcb->stack[sizeof(ptcb->stack) - 32];
-      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-user/task.c(89): warning: implicit conversion changes signedness: 'unsigned int' to 'long' [-Wsign-conversion]
-   89 |         *(pstktop--) = DEFAULT_LD;
-      |                      ~ ^~~~~~~~~~
-user/task.c(18): note: expanded from macro 'DEFAULT_LD'
-   18 | #define DEFAULT_LD     (0xFFFFFFFD)
-      |                         ^~~~~~~~~~
-user/task.c(107): warning: format specifies type 'void *' but the argument has type 'struct taskpcb *' [-Wformat-pedantic]
-  107 | printf("task: 0x%p stack: 0x%p\r\n", ptcb, pstktop);
-      |                 ~~                   ^~~~
-user/task.c(107): warning: format specifies type 'void *' but the argument has type 'long *' [-Wformat-pedantic]
-  107 | printf("task: 0x%p stack: 0x%p\r\n", ptcb, pstktop);
-      |                             ~~             ^~~~~~~
-user/task.c(111): warning: no previous prototype for function 'switch_to_psp' [-Wmissing-prototypes]
-  111 | void switch_to_psp(uint32_t new_psp) {
-      |      ^
-user/task.c(111): note: declare 'static' if the function is not intended to be used outside of this translation unit
-  111 | void switch_to_psp(uint32_t new_psp) {
-      | ^
-      | static 
-user/task.c(121): warning: no previous prototype for function 'start_task1' [-Wmissing-prototypes]
-  121 | void start_task1 (void)
-      |      ^
-user/task.c(121): note: declare 'static' if the function is not intended to be used outside of this translation unit
-  121 | void start_task1 (void)
-      | ^
-      | static 
-user/task.c(122): warning: function 'start_task1' could be declared with attribute 'noreturn' [-Wmissing-noreturn]
-  122 | {
-      | ^
-user/task.c(131): warning: code will never be executed [-Wunreachable-code]
-  131 |         new_psp = pcurtasktcb->pstktop;
+main.c(50): warning: cast to smaller integer type 'char' from 'void *' [-Wvoid-pointer-to-int-cast]
+   50 |         char ch = (char)param;
       |                   ^~~~~~~~~~~
-user/task.c(24): warning: no previous extern declaration for non-static variable 'pcurtasktcb' [-Wmissing-variable-declarations]
-   24 | struct taskpcb *pcurtasktcb;
-      |                 ^
-user/task.c(24): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   24 | struct taskpcb *pcurtasktcb;
+main.c(48): warning: no previous prototype for function 'thread_test' [-Wmissing-prototypes]
+   48 | int thread_test (void *param)
+      |     ^
+main.c(48): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   48 | int thread_test (void *param)
       | ^
-user/task.c(25): warning: no previous extern declaration for non-static variable 'pcanditasktcb' [-Wmissing-variable-declarations]
-   25 | struct taskpcb *pcanditasktcb;
-      |                 ^
-user/task.c(25): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-   25 | struct taskpcb *pcanditasktcb;
+      | static 
+main.c(63): warning: passing 'int (void *)' to parameter of type 'void *' converts between void pointer and function pointer [-Wpedantic]
+   63 |         create_task(thread_test, (void *)'a');
+      |                     ^~~~~~~~~~~
+main.c(16): note: passing argument to parameter 'pentry' here
+   16 |         void *pentry,
+      |               ^
+main.c(64): warning: passing 'int (void *)' to parameter of type 'void *' converts between void pointer and function pointer [-Wpedantic]
+   64 |         create_task(thread_test, (void *)'b');
+      |                     ^~~~~~~~~~~
+main.c(16): note: passing argument to parameter 'pentry' here
+   16 |         void *pentry,
+      |               ^
+main.c(65): warning: passing 'int (void *)' to parameter of type 'void *' converts between void pointer and function pointer [-Wpedantic]
+   65 |         create_task(thread_test, (void *)'c');
+      |                     ^~~~~~~~~~~
+main.c(16): note: passing argument to parameter 'pentry' here
+   16 |         void *pentry,
+      |               ^
+main.c(66): warning: passing 'int (void *)' to parameter of type 'void *' converts between void pointer and function pointer [-Wpedantic]
+   66 |         create_task(thread_test, (void *)'d');
+      |                     ^~~~~~~~~~~
+main.c(16): note: passing argument to parameter 'pentry' here
+   16 |         void *pentry,
+      |               ^
+main.c(60): warning: no previous prototype for function 'task_init' [-Wmissing-prototypes]
+   60 | int task_init(void)
+      |     ^
+main.c(60): note: declare 'static' if the function is not intended to be used outside of this translation unit
+   60 | int task_init(void)
       | ^
-user/task.c(42): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   42 |                 pcanditasktcb = tasklist[i];
-      |                                 ^~~~~~~~
-user/task.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   56 |                 if(TCB[i].pentry == NULL) return (&TCB[i]);
-      |                    ^~~
-user/task.c(56): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   56 |                 if(TCB[i].pentry == NULL) return (&TCB[i]);
-      |                                                    ^~~
-user/task.c(67): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   67 |                 if(tasklist[i] == NULL) {
-      |                    ^~~~~~~~
-user/task.c(68): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   68 |                         tasklist[i] = ptcb;
-      |                         ^~~~~~~~
-user/task.c(84): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-   84 |         pstktop = (long *)&ptcb->stack[sizeof(ptcb->stack) - 32];
-      |                            ^~~~~~~~~~~
-user/task.c(87): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   87 |         *(pstktop--) = 0x01000000L;
-      |           ^~~~~~~
-user/task.c(88): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   88 |         *(pstktop--) = (intptr_t) pentry; //pc
-      |           ^~~~~~~
-user/task.c(89): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   89 |         *(pstktop--) = DEFAULT_LD;
-      |           ^~~~~~~
-user/task.c(90): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   90 |         *(pstktop--) = 0x12121212L;
-      |           ^~~~~~~
-user/task.c(91): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   91 |         *(pstktop--) = 0x03030303;
-      |           ^~~~~~~
-user/task.c(92): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   92 |         *(pstktop--) = 0x02020202;
-      |           ^~~~~~~
-user/task.c(93): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   93 |         *(pstktop--) = 0x01010101;
-      |           ^~~~~~~
-user/task.c(94): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   94 |         *(pstktop--) = (intptr_t) param; // r0 param
-      |           ^~~~~~~
-user/task.c(96): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   96 |         *(pstktop--) = 0x11111111;
-      |           ^~~~~~~
-user/task.c(97): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   97 |         *(pstktop--) = 0x10101010;
-      |           ^~~~~~~
-user/task.c(98): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   98 |         *(pstktop--) = 0x09090909;
-      |           ^~~~~~~
-user/task.c(99): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-   99 |         *(pstktop--) = 0x08080808;
-      |           ^~~~~~~
-user/task.c(100): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-  100 |         *(pstktop--) = 0x77777777;
-      |           ^~~~~~~
-user/task.c(101): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-  101 |         *(pstktop--) = 0x66666666;
-      |           ^~~~~~~
-user/task.c(102): warning: unsafe pointer arithmetic [-Wunsafe-buffer-usage]
-  102 |         *(pstktop--) = 0x55555555;
-      |           ^~~~~~~
-user/task.c(128): warning: unsafe buffer access [-Wunsafe-buffer-usage]
-  128 |         NullTask.pstktop = &NullTask.stack[sizeof(NullTask.stack)];
-      |                             ^~~~~~~~~~~~~~
-33 warnings generated.
-compiling task.c...
+      | static 
+11 warnings generated.
+compiling main.c...
 linking...
-Program Size: Code=10076 RO-data=960 RW-data=16 ZI-data=4992  
-".\Objects\temp.axf" - 0 Error(s), 33 Warning(s).
+Program Size: Code=10116 RO-data=976 RW-data=16 ZI-data=4992  
+".\Objects\temp.axf" - 0 Error(s), 11 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -164,7 +101,7 @@ Package Vendor: Keil
   C:/Users/LX/AppData/Local/Arm/Packs/Keil/STM32F1xx_DFP/2.4.1/Device/Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

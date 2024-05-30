@@ -16,9 +16,20 @@ int create_task (
 	void *pentry,
 	void *param);
 
+	
+static inline void disable_interrupts(void) {
+    __asm volatile ("CPSID i" : : : "memory");
+}
+
+static inline void enable_interrupts(void) {
+    __asm volatile ("CPSIE i" : : : "memory");
+}
+
 int fputc(int ch, FILE *f)
 {
+	disable_interrupts();
   ITM_SendChar(ch);
+	enable_interrupts();
   return ch;
 }
 
@@ -32,13 +43,17 @@ int intrrupt_init(void)
 }
 void printtask (void);
 
+
+
 int thread_test (void *param)
 {
 	char ch = (char)param;
+	int  i = 0;
 	printf("\r\nthread run....");
 
 	while(1) {
-		printf("%c", ch);
+		printf("%c-%d ", ch, ++i);
+
 	}
 }
 

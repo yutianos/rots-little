@@ -108,16 +108,6 @@ printf("task: 0x%p stack: 0x%p\r\n", ptcb, pstktop);
 	return  regitserTask(ptcb);
 }
 
-void switch_to_psp(uint32_t new_psp) {
-    __asm volatile (
-        "MSR PSP, %0\n"       // Set PSP to new_psp
-        "MRS R0, CONTROL\n"   // Read CONTROL register
-        "ORR R0, R0, #2\n"    // Set bit 1 (SPSEL) to 1 to select PSP
-        "MSR CONTROL, R0\n"   // Write back to CONTROL register
-        : : "r" (new_psp) : "r0"
-    );
-}
-
 void start_task1 (void)
 {
 	int  *new_psp;
@@ -129,15 +119,5 @@ void start_task1 (void)
 	
 	//wait systick schedule
 	while(1){}
-	new_psp = pcurtasktcb->pstktop;
-	taskentry = pcurtasktcb->pentry;
-
-				__ASM volatile( 
-		"msr psp, %0\n"
-		"mov pc, %1\n"
-		:
-		: "r" (new_psp), "r" (taskentry)
-		: "memory"
-	  );
 }
 
